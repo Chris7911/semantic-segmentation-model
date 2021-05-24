@@ -71,8 +71,8 @@ def undistortFishEye(src, w):
 
     for x in np.arange(-1.0, 1.0, 1.0/Cx):
         for y in np.arange(-1.0, 1.0, 1.0/Cy):
-            rd = math.sqrt(x*x + y*y)
-            ru = math.tan(rd * w) / ( 2*math.tan(w/2.))
+            ru = math.sqrt(x*x + y*y)
+            rd = (1. / w) * math.atan(2.*ru*math.tan(w/2.))
 
             map_x[int(y*Cy + Cy), int(x*Cx + Cx)] = rd/ru * x*Cx + Cx
             map_y[int(y*Cy + Cy), int(x*Cx + Cx)] = rd/ru * y*Cy + Cy
